@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI-LMS Frontend
 
-## Getting Started
+Frontend cho **AI-Powered Learning Management System**, xây dựng bằng **Next.js** (App Router), **TypeScript** và **Tailwind CSS v4**. Kết nối với backend NestJS (Phase 1) theo tài liệu trong `docs/`.
 
-First, run the development server:
+- **Tailwind CSS v4**: cấu hình CSS-first trong `app/globals.css` (`@import "tailwindcss"`, `@theme inline`). Toàn bộ UI dùng utility class Tailwind (emerald primary, zinc neutral, dark mode).
+
+## Yêu cầu
+
+- Node.js 18+
+- pnpm (khuyến nghị: `corepack enable && corepack prepare pnpm@latest --activate`)
+
+## Cài đặt
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+cp .env.example .env.local
+# Chỉnh .env.local: NEXT_PUBLIC_API_URL trỏ tới backend (mặc định http://localhost:3001)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Chạy dev
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Mở [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+## Build & chạy production
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm build
+pnpm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Cấu trúc dự án
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **`app/`** – Next.js App Router: routes, layout; page gọn, logic đưa vào features/components
+- **`config/`** – Cấu hình: env (`getBaseUrl`), constants (`ROUTES`, `APP_NAME`)
+- **`contexts/auth/`** – AuthProvider, useAuth
+- **`features/auth/`** – LoginForm, RegisterForm (và sau này features khác: courses, dashboard)
+- **`components/ui/`** – Button, Input, Card (có index re-export)
+- **`components/layout/`** – Header (có index)
+- **`hooks/`** – useAuth (re-export) và hooks dùng chung
+- **`lib/api/`** – Client (client.ts) + endpoints tách file (auth, users, courses, …), index gộp export
+- **`lib/auth/`** – Token storage (storage.ts)
+- **`lib/utils/`** – getErrorMessage, tiện ích chung
+- **`types/`** – Types theo domain (api, user, course, enrollment, quiz) + index re-export
+- **`docs/`** – PRD, ERD, SCHEMA, API_NOTES, STRUCTURE (quy ước cấu trúc)
 
-## Deploy on Vercel
+Chi tiết quy ước folder: xem **`docs/STRUCTURE.md`**.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Tính năng đã có (Phase 1)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Auth**: Đăng ký, đăng nhập, JWT + refresh token (lưu localStorage), logout
+- **Layout**: Header với nav (Trang chủ, Khóa học, Dashboard) và trạng thái đăng nhập
+- **Dashboard**: Theo vai trò (Student / Teacher / Admin) – placeholder các link
+- **API client**: `authApi`, `usersApi`, `coursesApi`, `enrollmentsApi`, `quizzesApi`, `aiApi`; tự gắn Bearer và refresh khi 401
+
+## API backend (tham chiếu)
+
+- Auth: `POST /auth/register`, `POST /auth/login`, `POST /auth/refresh`, `POST /auth/logout`
+- Users: `GET /users/me`, `PATCH /users/me`, …
+- Courses: `GET /courses`, `GET /courses/:id`, …
+- Enrollments: `POST /courses/:id/enroll`, `GET /me/enrollments`, …
+- Quizzes: `GET /lessons/:lessonId/quizzes`, `POST /quizzes/:id/submissions`, …
+- AI: `POST /ai/generate-quiz`, `POST /ai/grade-essay`
+
+Chi tiết xem `docs/API_NOTES.md`, `docs/SCHEMA.md`.
+
+## Linting
+
+```bash
+pnpm lint
+```
