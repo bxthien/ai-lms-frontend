@@ -47,7 +47,9 @@ export function Header() {
             <>
               <span className="text-sm text-zinc-600 dark:text-zinc-400">
                 {user.fullName}
-                <span className="ml-1 text-xs text-zinc-400">({user.role})</span>
+                <span className="ml-1 text-xs text-zinc-400">
+                  ({user.role})
+                </span>
               </span>
               <Button variant="outline" size="sm" onClick={() => logout()}>
                 Đăng xuất

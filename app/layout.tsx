@@ -17,7 +17,6 @@ export default function RootLayout({
     <html lang="vi">
       <body className="font-sans">
         <AuthProvider>
-          <Header />
           <main>{children}</main>
         </AuthProvider>
       </body>
