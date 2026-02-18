@@ -16,6 +16,11 @@ export function Header() {
   const pathname = usePathname();
   const { user, isAuthenticated, isLoading, logout } = useAuth();
 
+  // Ẩn header khi ở dashboard (dashboard có Sidebar riêng)
+  if (pathname?.startsWith(ROUTES.DASHBOARD)) {
+    return null;
+  }
+
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-200 bg-white/95 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/95">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
