@@ -1,3 +1,4 @@
+import type { Course } from "@/types";
 import { apiGet, apiPost, apiPatch, apiDelete } from "../client";
 
 export const coursesApi = {
@@ -5,16 +6,16 @@ export const coursesApi = {
     const search = params
       ? new URLSearchParams(params as Record<string, string>).toString()
       : "";
-    return apiGet<unknown[]>(`/courses${search ? `?${search}` : ""}`);
+    return apiGet<Course[]>(`/courses${search ? `?${search}` : ""}`);
   },
-  getById: (id: string) => apiGet<unknown>(`/courses/${id}`),
+  getById: (id: string) => apiGet<Course>(`/courses/${id}`),
   create: (body: {
     title: string;
     description: string;
     level: string;
     price: number;
     thumbnailUrl?: string;
-  }) => apiPost<unknown>("/courses", body),
+  }) => apiPost<Course>("/courses", body),
   update: (
     id: string,
     body: Partial<{
@@ -24,7 +25,7 @@ export const coursesApi = {
       price: number;
       thumbnailUrl: string;
     }>
-  ) => apiPatch<unknown>(`/courses/${id}`, body),
+  ) => apiPatch<Course>(`/courses/${id}`, body),
   delete: (id: string) => apiDelete(`/courses/${id}`),
   publish: (id: string, body?: { publish: boolean }) =>
     apiPatch(`/courses/${id}/publish`, body ?? { publish: true }),

@@ -7,12 +7,15 @@ type DashboardSidebarContextValue = {
   openSidebar: () => void;
   closeSidebar: () => void;
   toggleSidebar: () => void;
+  hasRightSidebar: boolean;
+  setHasRightSidebar: (has: boolean) => void;
 };
 
 const DashboardSidebarContext = createContext<DashboardSidebarContextValue | null>(null);
 
 export function DashboardSidebarProvider({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [hasRightSidebar, setHasRightSidebar] = useState(false);
 
   const value = useMemo<DashboardSidebarContextValue>(
     () => ({
@@ -20,8 +23,10 @@ export function DashboardSidebarProvider({ children }: { children: React.ReactNo
       openSidebar: () => setIsSidebarOpen(true),
       closeSidebar: () => setIsSidebarOpen(false),
       toggleSidebar: () => setIsSidebarOpen((v) => !v),
+      hasRightSidebar,
+      setHasRightSidebar,
     }),
-    [isSidebarOpen],
+    [isSidebarOpen, hasRightSidebar],
   );
 
   return (

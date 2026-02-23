@@ -13,16 +13,21 @@ const pageTitles: Record<string, string> = {
   [ROUTES.DASHBOARD]: "Dashboard",
   [ROUTES.COURSES]: "Khóa học",
   [ROUTES.CLASSROOM]: "Lớp học",
+  [ROUTES.ENROLLMENTS]: "Khóa học của tôi",
 };
 
 export function DashboardHeader({ title }: DashboardHeaderProps) {
   const { user } = useAuth();
   const pathname = usePathname();
   const pageTitle = title ?? pageTitles[pathname || ""] ?? "Dashboard";
-  const { openSidebar } = useDashboardSidebar();
+  const { openSidebar, hasRightSidebar } = useDashboardSidebar();
 
   return (
-    <header className="sticky top-0 z-50 bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 px-6 py-4">
+    <header
+      className={`sticky top-0 z-40 bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 px-4 py-4 ${
+        hasRightSidebar ? "lg:pr-84" : ""
+      }`}
+    >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <button
