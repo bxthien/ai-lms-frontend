@@ -8,7 +8,12 @@ import { DashboardHeader } from "@/components/dashboard";
 function VideoList() {
   const videos = [
     { id: 1, title: "Bài 1: Giới thiệu", duration: "15:30", thumbnail: "🎥" },
-    { id: 2, title: "Bài 2: Khái niệm cơ bản", duration: "22:45", thumbnail: "🎥" },
+    {
+      id: 2,
+      title: "Bài 2: Khái niệm cơ bản",
+      duration: "22:45",
+      thumbnail: "🎥",
+    },
     { id: 3, title: "Bài 3: Thực hành", duration: "18:20", thumbnail: "🎥" },
     { id: 4, title: "Bài 4: Tổng kết", duration: "12:10", thumbnail: "🎥" },
   ];
@@ -65,24 +70,13 @@ export default function ClassroomPage() {
 
   return (
     <>
-      <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 lg:mr-80">
-        <DashboardHeader />
-        <div className="p-6">
-          <h1 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-6">
-            Lớp học
-          </h1>
-          <div className="rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 text-center">
-            <p className="text-zinc-600 dark:text-zinc-400">
-              Nội dung lớp học sẽ hiển thị tại đây.
-            </p>
-          </div>
-        </div>
+      <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 px-4 pb-10 pt-4">
+        {/* <DashboardHeader /> */}
       </div>
 
-      {/* Right Sidebar - Video List cho Classroom */}
-      <RightSidebar title="Video bài học">
+      {/* <RightSidebar title="Video bài học">
         <VideoList />
-      </RightSidebar>
+      </RightSidebar> */}
     </>
   );
 }

@@ -49,16 +49,16 @@ export default function DashboardPage() {
 
   return (
     <>
-      <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 lg:mr-80 px-6 pt-6">
-        <DashboardHeader />
-        <div className="py-6">
+      <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 lg:mr-80 px-4 pt-4">
+        {/* <DashboardHeader /> */}
+        <div className="py-4">
           {/* Announcement */}
-          <div className="mb-6">
+          <div className="mb-4">
             <AnnouncementCard />
           </div>
 
           {/* Grid Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {/* Schedule */}
             <ScheduleCard />
 
