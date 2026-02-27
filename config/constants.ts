@@ -10,7 +10,7 @@ export const ROUTES = {
   REGISTER: "/register",
   DASHBOARD: "/dashboard",
   COURSES: "/courses",
-  DASHBOARD_COURSES: "/dashboard/courses",
-  DASHBOARD_ENROLLMENTS: "/dashboard/enrollments",
-  DASHBOARD_ADMIN: "/dashboard/admin",
+  CLASSROOM: "/classroom",
+  ENROLLMENTS: "/enrollments",
+  ADMIN: "/admin",
 } as const;
