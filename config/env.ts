@@ -15,5 +15,5 @@ const getEnv = (key: string, fallback = ""): string => {
 
 /** Base URL cho API client. Mặc định https://ai-lms-api.vercel.app/api. */
 export const getBaseUrl = (): string => {
-  return getEnv("NEXT_PUBLIC_API_URL", "https://ai-lms-api.vercel.app/api");
+  return getEnv("NEXT_PUBLIC_API_URL", "https://ai-lms-api.vercel.app/");
 };
