@@ -14,7 +14,7 @@ type DashboardSidebarContextValue = {
 const DashboardSidebarContext = createContext<DashboardSidebarContextValue | null>(null);
 
 export function DashboardSidebarProvider({ children }: { children: React.ReactNode }) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [hasRightSidebar, setHasRightSidebar] = useState(false);
 
   const value = useMemo<DashboardSidebarContextValue>(

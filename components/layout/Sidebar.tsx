@@ -286,17 +286,12 @@ export function Sidebar() {
           fixed left-0 top-0 h-screen w-64 bg-white border-r border-zinc-200 dark:bg-zinc-900 dark:border-zinc-800 flex flex-col z-50
           transform transition-transform duration-300 ease-in-out
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
-          lg:translate-x-0
         `}
       >
         {/* Logo */}
         <div className="p-6 border-b border-zinc-200 dark:border-zinc-800">
           <div className="flex items-center justify-between gap-3">
-            <Link
-              href={ROUTES.DASHBOARD}
-              className="flex items-center gap-2"
-              onClick={closeSidebar}
-            >
+            <Link href={ROUTES.DASHBOARD} className="flex items-center gap-2">
               <div className="h-8 w-8 rounded bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
                 <span className="text-white text-lg font-bold">🎓</span>
               </div>
@@ -337,7 +332,6 @@ export function Sidebar() {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={closeSidebar}
                 className={`
                 flex items-center gap-3 px-4 py-3 rounded-lg transition-colors
                 ${
@@ -360,7 +354,6 @@ export function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
-              onClick={closeSidebar}
               className="flex items-center gap-3 px-4 py-3 rounded-lg text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800 transition-colors"
             >
               {item.icon}
