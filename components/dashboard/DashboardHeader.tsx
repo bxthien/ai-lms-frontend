@@ -32,7 +32,7 @@ export function DashboardHeader({ title }: DashboardHeaderProps) {
         <div className="flex items-center gap-3">
           <button
             onClick={openSidebar}
-            className="lg:hidden rounded-lg p-2 text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
+            className="rounded-lg p-2 text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
             aria-label="Mở menu"
           >
             <svg
