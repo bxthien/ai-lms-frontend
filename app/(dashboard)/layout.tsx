@@ -22,7 +22,11 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <DashboardSidebarProvider>
       <DashboardLayoutInner>{children}</DashboardLayoutInner>

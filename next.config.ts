@@ -1,21 +1,16 @@
 import type { NextConfig } from "next";
 
 /**
- * Proxy /api/* sang backend để tránh CORS khi frontend chạy khác origin (ví dụ 192.168.1.8:3001).
- * Set API_PROXY_TARGET đúng URL backend (mặc định http://localhost:3000).
+ * Cấu hình Next.js.
+ *
+ * allowedDevOrigins:
+ * - Cho phép truy cập dev server từ các origin khác (vd: device trong LAN).
  */
-const apiProxyTarget =
-  process.env.API_PROXY_TARGET ?? "http://localhost:3000";
 
 const nextConfig: NextConfig = {
-  async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: `${apiProxyTarget}/:path*`,
-      },
-    ];
-  },
+  // Cho phép truy cập từ IP LAN đang dùng để mở app trong dev.
+  // Nếu cần, có thể thêm origin khác vào mảng này.
+  allowedDevOrigins: ["*"],
 };
 
 export default nextConfig;
