@@ -15,7 +15,5 @@ const getEnv = (key: string, fallback = ""): string => {
 
 /** Base URL cho API client. Mặc định "/api" (proxy) để tránh CORS. */
 export const getBaseUrl = (): string => {
-  const url = getEnv("NEXT_PUBLIC_API_URL");
-  if (url) return url;
-  return "/api";
+  return getEnv("NEXT_PUBLIC_API_URL", "https://ai-lms-api.vercel.app/");
 };
