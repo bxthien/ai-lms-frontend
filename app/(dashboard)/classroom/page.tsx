@@ -100,7 +100,7 @@ function ClassroomPageInner() {
           >
             danh sách khóa học của bạn
           </a>{" "}
-          và chọn \"Tiếp tục học\".
+          và chọn &quot;Tiếp tục học&quot;.
         </div>
       )}
 

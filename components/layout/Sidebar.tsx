@@ -32,6 +32,7 @@ const navItems: NavItem[] = [
 const bottomNavItems: NavItem[] = [
   { href: "#", label: "Trợ giúp", icon: <HelpIcon /> },
   { href: "#", label: "Cài đặt", icon: <SettingIcon /> },
+  { href: ROUTES.PROFILE, label: "Hồ sơ cá nhân", icon: <SettingIcon /> },
 ];
 
 function GridIcon() {

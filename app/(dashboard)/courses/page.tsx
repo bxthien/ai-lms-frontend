@@ -486,7 +486,7 @@ export default function CoursesPage() {
                     {published.length} khóa
                   </span>
                 </div>
-                <div className="grid gap-4 md:grid-cols-3">
+                <div className="grid gap-4 md:grid-cols-4">
                   {published.map((course, i) => (
                     <CourseCardView
                       key={course.id}

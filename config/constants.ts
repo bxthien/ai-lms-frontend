@@ -12,5 +12,6 @@ export const ROUTES = {
   COURSES: "/courses",
   CLASSROOM: "/classroom",
   ENROLLMENTS: "/enrollments",
+  PROFILE: "/profile",
   ADMIN: "/admin",
 } as const;
